@@ -1,0 +1,7 @@
+name: NuStarLib
+version: '${project.version}'
+main: com.rihejiu.nustarlib.NuStarLib
+author: 'NuStar'
+commands:
+  nustarlib:
+    aliases: [nslib]

@@ -1,0 +1,24 @@
+MenuName: "测试菜单"
+
+Layout:
+  - "#########"
+  - "####A####"
+  - "####B####"
+  - "####C####"
+  - "#########"
+Buttons:
+  '#':
+    name: "玻璃板"
+    material: 'stained_glass_pane'
+    lore:
+      - "这只是个玻璃板"
+  'A':
+    name: "钻石"
+    material: 'diamond'
+    lore:
+      - "一颗钻石"
+  'B':
+    name: "黄金"
+    material: 'gold_ingot'
+    lore:
+      - "一个金锭"
