@@ -1,5 +1,6 @@
 package com.rihejiu.nustarlib;
 
+import com.rihejiu.nustarlib.listeners.Monitor;
 import com.rihejiu.nustarlib.menu.MenuManager;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -26,6 +27,7 @@ public final class NuStarLib extends JavaPlugin {
             saveResource("testMenu.yml",false);
         }
         getServer().getPluginCommand("nustarlib").setExecutor(new Commands());
+        getServer().getPluginManager().registerEvents(new Monitor(), this);
         loadManager();
         console("§a[NuStarLib]核心库已加载");
         console("§a[NuStarLib]by NuStar");

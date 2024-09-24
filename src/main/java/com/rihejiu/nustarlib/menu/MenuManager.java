@@ -38,7 +38,7 @@ public class MenuManager {
             }
             line ++;
         }
-        this.menuMap.put(menuName, new FileMenu(inventory));
+        this.menuMap.put(menuName, new FileMenu(inventory,menuName));
     }
     public void openMenu(String menuName, Player player) {
         this.menuMap.get(menuName).open(player);
