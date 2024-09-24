@@ -19,6 +19,8 @@ public class Commands implements CommandExecutor {
                 return true;
             }
         }
+        if (strings[0].equalsIgnoreCase("test")) {
+        }
         return true;
     }
 }
