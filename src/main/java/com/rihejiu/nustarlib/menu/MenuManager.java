@@ -21,24 +21,30 @@ public class MenuManager {
         addMenu(new File(NuStarLib.getInstance().getDataFolder(), "/testMenu.yml"));
     }
     public void addMenu(File menuFile) {
+        // 读取菜单文件
         YamlConfiguration yamlConfiguration = YamlConfiguration.loadConfiguration(menuFile);
         String menuName = yamlConfiguration.getString("MenuName");
         List<String> layout = yamlConfiguration.getStringList("Layout");
         Inventory inventory = Bukkit.createInventory(new MenuHolder(menuName), layout.size() * 9, menuName);
+        Map<String, MenuButton> menuButtons = new HashMap<>();
         int line = 0;
+        // 遍历菜单布局
         for (String layoutString : layout) {
+            // 将行字符串拆分成字符
             char[] buttons = layoutString.toCharArray();
             int index = 0;
             for (char button : buttons) {
                 ConfigurationSection section = yamlConfiguration.getConfigurationSection("Buttons." + button);
                 if (section != null) {
-                    inventory.setItem(line * 9 + index, new MenuButton(section).crate());
+                    MenuButton menuButton = new MenuButton(section);
+                    menuButtons.put(button + "", menuButton);
+                    inventory.setItem(line * 9 + index, menuButton.crate());
                 }
                 index ++;
             }
             line ++;
         }
-        this.menuMap.put(menuName, new FileMenu(inventory,menuName));
+        this.menuMap.put(menuName, new FileMenu(inventory,menuName, menuButtons));
     }
     public void openMenu(String menuName, Player player) {
         this.menuMap.get(menuName).open(player);

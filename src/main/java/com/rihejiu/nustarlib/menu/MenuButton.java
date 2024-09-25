@@ -8,6 +8,22 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.List;
 
 public class MenuButton {
+    public String getName() {
+        return name;
+    }
+
+    public String getMaterial() {
+        return material;
+    }
+
+    public List<String> getLore() {
+        return lore;
+    }
+
+    public int getData() {
+        return data;
+    }
+
     private final String name;
     private final String material;
     private final List<String> lore;
