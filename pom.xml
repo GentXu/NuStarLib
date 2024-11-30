@@ -6,7 +6,7 @@
 
     <groupId>com.rihejiu</groupId>
     <artifactId>NuStarLib</artifactId>
-    <version>1.1.0-SNAPSHOT</version>
+    <version>1.1.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>NuStarLib</name>
@@ -31,6 +31,42 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
                 <version>3.2.4</version>
+                <configuration>
+                    <relocations>
+                        <relocation>
+                            <pattern>com.alibaba.fastjson2</pattern>
+                            <shadedPattern>com.rihejiu.nustarlib.lib.fastjson2</shadedPattern>
+                        </relocation>
+                        <relocation>
+                            <pattern>com.google.gson</pattern>
+                            <shadedPattern>com.rihejiu.nustarlib.lib.gson</shadedPattern>
+                        </relocation>
+                        <relocation>
+                            <pattern>com.zaxxer.hikari</pattern>
+                            <shadedPattern>com.rihejiu.nustarlib.lib.hikari</shadedPattern>
+                        </relocation>
+                        <relocation>
+                            <pattern>kong.unirest</pattern>
+                            <shadedPattern>com.rihejiu.nustarlib.lib.unirest</shadedPattern>
+                        </relocation>
+                        <relocation>
+                            <pattern>kotlin</pattern>
+                            <shadedPattern>com.rihejiu.nustarlib.lib.kotlin</shadedPattern>
+                        </relocation>
+                        <relocation>
+                            <pattern>okhttp3</pattern>
+                            <shadedPattern>com.rihejiu.nustarlib.lib.okhttp3</shadedPattern>
+                        </relocation>
+                        <relocation>
+                            <pattern>okio</pattern>
+                            <shadedPattern>com.rihejiu.nustarlib.lib.okio</shadedPattern>
+                        </relocation>
+                        <relocation>
+                            <pattern>org.apache</pattern>
+                            <shadedPattern>com.rihejiu.nustarlib.lib.apache</shadedPattern>
+                        </relocation>
+                    </relocations>
+                </configuration>
                 <executions>
                     <execution>
                         <phase>package</phase>
@@ -82,6 +118,26 @@
             <version>1.0.0</version>
             <scope>system</scope>
             <systemPath>${pom.basedir}/src/libs/[P][变量]PlaceholderAPI-2.10.9.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>4.10.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.konghq</groupId>
+            <artifactId>unirest-java</artifactId>
+            <version>3.14.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba.fastjson2</groupId>
+            <artifactId>fastjson2</artifactId>
+            <version>2.0.35</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjdk.nashorn</groupId>
+            <artifactId>nashorn-core</artifactId>
+            <version>15.4</version>
         </dependency>
     </dependencies>
 </project>
