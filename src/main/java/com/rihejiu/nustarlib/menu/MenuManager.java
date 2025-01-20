@@ -6,8 +6,10 @@ import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,13 +33,13 @@ public class MenuManager {
         // 遍历菜单布局
         for (String layoutString : layout) {
             // 将行字符串拆分成字符
-            char[] buttons = layoutString.toCharArray();
+            List<String> StringButtons = getStringButtons(layoutString);
             int index = 0;
-            for (char button : buttons) {
+            for (String button : StringButtons) {
                 ConfigurationSection section = yamlConfiguration.getConfigurationSection("Buttons." + button);
                 if (section != null) {
                     MenuButton menuButton = new MenuButton(section);
-                    menuButtons.put(button + "", menuButton);
+                    menuButtons.put(button, menuButton);
                     inventory.setItem(line * 9 + index, menuButton.crate());
                 }
                 index ++;
@@ -46,6 +48,39 @@ public class MenuManager {
         }
         this.menuMap.put(menuName, new FileMenu(inventory,menuName, menuButtons));
     }
+
+    @NotNull
+    private static List<String> getStringButtons(String layoutString) {
+        char[] charButtons = layoutString.toCharArray();
+        List<String> StringButtons = new ArrayList<>();
+        StringBuilder stringBuilder = new StringBuilder();
+        // 查到的第一个 ` 符号
+        int index1 = 0;
+        boolean isEnd = false;
+        // 将所有字符添加到StringBuilder中
+        for (char charButton : charButtons) {
+            stringBuilder.append(charButton);
+        }
+        // 遍历字符找到字符串图标
+        for (int i = 0; i < charButtons.length; i++) {
+            if (index1 != 0 && charButtons[i] == '`') {
+                isEnd = true;
+                StringButtons.add(stringBuilder.substring(index1, i));
+                index1 = 0;
+                continue;
+            }
+            if (charButtons[i] == '`') {
+                index1 = i + 1;
+                continue;
+            }
+            if (index1 != 0 && !isEnd) {
+                continue;
+            }
+            StringButtons.add(String.valueOf(charButtons[i]));
+        }
+        return StringButtons;
+    }
+
     public void openMenu(String menuName, Player player) {
         this.menuMap.get(menuName).open(player);
     }

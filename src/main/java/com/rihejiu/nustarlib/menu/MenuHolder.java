@@ -4,19 +4,15 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 
 public class MenuHolder implements InventoryHolder {
-    public Menu getMenu() {
-        return menu;
-    }
-
-    private Menu menu;
+    private Inventory inventory;
 
     public String getMenuType() {
         return menuType;
     }
 
     private final String menuType;
-    public MenuHolder(Menu menu,String menuType){
-        this.menu = menu;
+    public MenuHolder(String menuType, Inventory inventory){
+        this.inventory = inventory;
         this.menuType = menuType;
     }
     public MenuHolder(String menuType) {
@@ -24,6 +20,6 @@ public class MenuHolder implements InventoryHolder {
     }
     @Override
     public Inventory getInventory() {
-        return menu.toBukkitInventory();
+        return inventory;
     }
 }
