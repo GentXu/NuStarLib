@@ -59,6 +59,9 @@ public class MenuButton {
         if (!itemMeta.hasLore()) return itemStack;
         List<String> lore1 = new ArrayList<>(itemMeta.getLore());
         lore1.replaceAll(text -> PlaceholderAPI.setPlaceholders(player, text));
+        lore1.replaceAll(text -> text.replace("&", "§"));
+        String itemName = itemMeta.getDisplayName().replaceAll("&", "§");
+        itemMeta.setDisplayName(itemName);
         itemMeta.setLore(lore1);
         itemStack.setItemMeta(itemMeta);
         return itemStack;

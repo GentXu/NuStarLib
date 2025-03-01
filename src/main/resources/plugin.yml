@@ -2,6 +2,8 @@ name: NuStarLib
 version: '${project.version}'
 main: com.rihejiu.nustarlib.NuStarLib
 author: 'NuStar'
+softdepend:
+  - 'ProtocolLib'
 commands:
   nustarlib:
     aliases: [nslib]

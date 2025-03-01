@@ -14,7 +14,7 @@ public class Monitor implements Listener {
     public void onClick(InventoryClickEvent event) {
         if (event.getInventory().getHolder() instanceof MenuHolder) {
             MenuHolder menuHolder = (MenuHolder) event.getInventory().getHolder();
-            Bukkit.getPluginManager().callEvent(new ClickEvent(event,menuHolder.getMenuType()));
+            Bukkit.getPluginManager().callEvent(new ClickEvent(event,menuHolder.getMenuType(), menuHolder.getAbsNuStarGui()));
         }
     }
     @EventHandler

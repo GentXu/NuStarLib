@@ -6,7 +6,7 @@
 
     <groupId>com.rihejiu</groupId>
     <artifactId>NuStarLib</artifactId>
-    <version>1.1.3-SNAPSHOT</version>
+    <version>1.1.4-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>NuStarLib</name>
@@ -122,6 +122,13 @@
             <version>1.0.0</version>
             <scope>system</scope>
             <systemPath>${pom.basedir}/src/libs/[P][变量]PlaceholderAPI-2.10.9.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>ProtocolLib</groupId>
+            <artifactId>ProtocolLib</artifactId>
+            <version>5.3.0</version>
+            <scope>system</scope>
+            <systemPath>${pom.basedir}/src/libs/ProtocolLib (6).jar</systemPath>
         </dependency>
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>

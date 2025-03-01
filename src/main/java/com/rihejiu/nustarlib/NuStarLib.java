@@ -1,7 +1,7 @@
 package com.rihejiu.nustarlib;
 
 import com.rihejiu.nustarlib.listeners.Monitor;
-import com.rihejiu.nustarlib.menu.MenuManager;
+import com.rihejiu.nustarlib.managers.MenuManager;
 import com.rihejiu.nustarlib.utils.web.HttpType;
 import com.rihejiu.nustarlib.utils.web.NuStarHTTP;
 import com.rihejiu.nustarlib.utils.web.OkHttp;
@@ -42,7 +42,6 @@ public final class NuStarLib extends JavaPlugin {
         if (!testMenu.exists()) {
             saveResource("testMenu.yml",false);
         }
-        getServer().getPluginCommand("nustarlib").setExecutor(new Commands());
         getServer().getPluginManager().registerEvents(new Monitor(), this);
         loadManager();
         console("§a[NuStarLib]核心库已加载");

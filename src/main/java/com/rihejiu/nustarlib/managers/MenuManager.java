@@ -1,6 +1,9 @@
-package com.rihejiu.nustarlib.menu;
+package com.rihejiu.nustarlib.managers;
 
 import com.rihejiu.nustarlib.NuStarLib;
+import com.rihejiu.nustarlib.menu.FileMenu;
+import com.rihejiu.nustarlib.menu.MenuButton;
+import com.rihejiu.nustarlib.menu.MenuHolder;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
